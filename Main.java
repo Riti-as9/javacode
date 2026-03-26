@@ -1,45 +1,48 @@
-import java.util.Scanner;
+// Point class
+class Point {
+    int x;
+    int y;
 
-class Item {
-    int code;
-    double price;
-
-    void input(Scanner sc) {
-        System.out.print("Enter item code: ");
-        code = sc.nextInt();
-        System.out.print("Enter item price: ");
-        price = sc.nextDouble();
+    // Constructor
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    void display() {
-        System.out.println(code + "\t\t" + price);
+    // Method to display point
+    void displayPoint() {
+        System.out.println("Center Point: (" + x + ", " + y + ")");
     }
 }
 
+// Circle class
+class Circle {
+    double radius;
+    Point center;  // Object of Point class
+
+    // Constructor
+    Circle(double radius, int x, int y) {
+        this.radius = radius;
+        center = new Point(x, y);  // Composition
+    }
+
+    // Method to calculate area
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    // Method to display circle details
+    void displayCircle() {
+        System.out.println("Radius: " + radius);
+        center.displayPoint();
+        System.out.println("Area of Circle: " + calculateArea());
+    }
+}
+
+// Main class
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        Item[] items = new Item[5];
-        double total = 0;
-
-        // Input
-        for (int i = 0; i < 5; i++) {
-            System.out.println("\nEnter details for item " + (i + 1));
-            items[i] = new Item();
-            items[i].input(sc);
-            total += items[i].price;
-        }
-
-        // Display
-        System.out.println("\nCode\t\tPrice");
-        System.out.println("----------------------");
-        for (int i = 0; i < 5; i++) {
-            items[i].display();
-        }
-
-        // Total price
-        System.out.println("----------------------");
-        System.out.println("Total Price = " + total);
+        Circle c = new Circle(5.0, 2, 3);
+        c.displayCircle();
     }
 }
