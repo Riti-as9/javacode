@@ -11,7 +11,7 @@ class Salary implements Gross {
 }
 
 class Employee extends Salary {
-    String name = "Vivek";
+    String name = "Ritika";
     int id = 101;
 
     void display() {
