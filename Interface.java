@@ -38,7 +38,7 @@ class Transaction extends Customer implements Bank {
 public class Interface {
     public static void main(String[] args) {
         Transaction t = new Transaction();
-        t.name = "Vivek";
+        t.name = "Ritika";
         t.deposit(1000);
         t.withdraw(500);
         t.display();
